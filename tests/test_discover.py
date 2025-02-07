@@ -2,7 +2,6 @@ from unittest import IsolatedAsyncioTestCase
 from unittest.mock import AsyncMock, patch
 from discover import main
 from bleak.backends.device import BLEDevice
-import os
 
 class TestDiscover(IsolatedAsyncioTestCase):
     @patch('src.discover.BleakScanner.discover', new_callable=AsyncMock)
