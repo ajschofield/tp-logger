@@ -1,6 +1,6 @@
 from unittest import IsolatedAsyncioTestCase
 from unittest.mock import AsyncMock, patch
-from discover import main
+from discover import discover
 from bleak.backends.device import BLEDevice
 
 class TestDiscover(IsolatedAsyncioTestCase):
@@ -10,7 +10,7 @@ class TestDiscover(IsolatedAsyncioTestCase):
 
         mock_discover.return_value = [device_1]
 
-        result = await main(debug_flag=False)
+        result = await discover()
 
         expected = [
             {"name": "TP350S", "address": "AA:BB:CC:DD:EE:FF"},
@@ -25,7 +25,7 @@ class TestDiscover(IsolatedAsyncioTestCase):
 
         mock_discover.return_value = [device_1, device_2]
 
-        result = await main(debug_flag=True)
+        result = await discover()
 
         expected = [
             {"name": "TP350S", "address": "AA:BB:CC:DD:EE:FF"},
