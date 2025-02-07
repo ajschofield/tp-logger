@@ -11,9 +11,9 @@ async def connect(address):
 
                 services = await client.get_services()
                 for service in services:
-                    logger.info(f"Service: {service.uuid}")
+                    logger.debug(f"Service: {service.uuid}")
                     for char in service.characteristics:
-                        logger.info(f"  └── Characteristic: {char.uuid}, Properties: {char.properties}")
+                        logger.debug(f"  └── Characteristic: {char.uuid}, Properties: {char.properties}")
                 return client
             else:
                 logger.error("Failed to connect!")
