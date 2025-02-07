@@ -16,13 +16,13 @@ async def discover(debug=False):
     except Exception:
         return []
 
-async def main():
-    check_debug = os.getenv("DEBUG", "FALSE").upper() == "TRUE"
+async def main(debug_flag=None):
+    check_debug = debug_flag if debug_flag is not None else os.getenv("DEBUG", "FALSE").upper() == "TRUE"
     if check_debug:
         print("DEBUG MODE ENABLED")
     devices = await discover(debug=check_debug)
-
     print(devices)
+    return devices
 
 if __name__ == "__main__":
     asyncio.run(main())
