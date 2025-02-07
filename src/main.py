@@ -1,4 +1,5 @@
 from discover import discover
+from connect import connect
 import os
 from logger import get_logger
 import asyncio
@@ -42,6 +43,10 @@ async def main(debug_flag=None):
     else:
         device = devices[0]
         logger.info(f"Single device selected: {device['name']} - {device['address']}")
+    
+    conn = await connect(device['address'])
+
+    return conn
 
 if __name__ == "__main__":
     asyncio.run(main())
